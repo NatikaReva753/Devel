@@ -15,26 +15,21 @@ class HomeWork(unittest.TestCase):
 
     def test_home_work(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, "admin", "secret")
-        self.open_new_address_book(wd)
         self.crete_group(wd, Group("Nata", "test", "test", "test", "test", "test"))
-        self.return_to_home_page(wd)
         self.Logout(wd)
 
     def test_home_work_two(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, "admin", "secret")
-        self.open_new_address_book(wd)
         self.crete_group(wd, Group("", "", "", "", "", ""))
-        self.return_to_home_page(wd)
         self.Logout(wd)
 
     def open_home_page(self, wd):
         wd.get("http://localhost/addressbook/group.php")
 
     def login(self, wd, username, password):
+        self.open_home_page(wd)
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
@@ -48,6 +43,7 @@ class HomeWork(unittest.TestCase):
         wd.get("http://localhost/addressbook/edit.php")
 
     def crete_group(self, wd, group):
+        self.open_new_address_book(wd)
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(group.firstname)
@@ -67,6 +63,7 @@ class HomeWork(unittest.TestCase):
         wd.find_element_by_name("lastname").clear()
         wd.find_element_by_name("lastname").send_keys(group.lastname)
         wd.find_element_by_xpath("//div[@id='content']/form/input[20]").click()
+        self.return_to_home_page(wd)
 
     def Logout(self, wd):
         wd.find_element_by_link_text("Logout").click()
