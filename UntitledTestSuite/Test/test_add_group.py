@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
+from UntitledTestSuite.Model.group import Group
+from UntitledTestSuite.Fixture.application import Application
 import pytest
-from group import Group
-from application import Application
-
-
 
 @pytest.fixture
 def app(request):
-    fixture = Application
+    fixture = Application()
     request.addfinalizer(fixture.destroy)
     return fixture
 
