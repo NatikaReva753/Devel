@@ -10,11 +10,11 @@ def app(request):
     return fixture
 
 def test_home_work(app):
-    app.login("admin", "secret")
+    app.session.login("admin", "secret")
     app.crete_group(Group("Nata", "test", "test", "test", "test", "test"))
-    app.Logout()
+    app.session.Logout()
 
 def test_home_work_two(app):
-    app.login("admin", "secret")
+    app.session.login("admin", "secret")
     app.crete_group(Group("", "", "", "", "", ""))
-    app.Logout()
+    app.session.Logout()
