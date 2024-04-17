@@ -11,10 +11,10 @@ def app(request):
 
 def test_home_work(app):
     app.session.login("admin", "secret")
-    app.crete_group(Group("Nata", "test", "test", "test", "test", "test"))
+    app.create.kontact(Group("Nata", "test", "test", "test", "test", "test"))
     app.session.Logout()
 
 def test_home_work_two(app):
     app.session.login("admin", "secret")
-    app.crete_group(Group("", "", "", "", "", ""))
+    app.create.kontact(Group("", "", "", "", "", ""))
     app.session.Logout()
