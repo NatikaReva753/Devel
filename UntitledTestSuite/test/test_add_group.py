@@ -5,8 +5,8 @@ from UntitledTestSuite.model.group import Group
 
 def test_add_group(app):
     app.session.login("admin", "secret")
-    app.group.create(Group("New", "test", "test"))
+    app.group.contact(Group("New", "test", "test"))
 
 def test_add_group_two(app):
-    app.group.create(Group("", "", ""))
+    app.group.contact(Group("", "", ""))
 
