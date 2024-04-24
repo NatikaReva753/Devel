@@ -10,7 +10,7 @@ def app(request):
 
 def test_add_contact(app):
     app.login("admin", "secret")
-    app.create_contact(Contact("Nata", "Test", "Test", "Test", "Test"))
+    app.create_contact(Contact("Nata", "UntitledTestSuite", "UntitledTestSuite", "UntitledTestSuite", "UntitledTestSuite"))
     app.logout()
 
 def test_add_contact_two(app):
