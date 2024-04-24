@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from selenium import webdriver
 from group import Group
 import unittest, time, re
@@ -11,25 +10,24 @@ class TestAddGroup(unittest.TestCase):
 
     def test_add_group(self):
         wd = self.wd
-        self.open_hame_page(wd)
+        self.open_home_page(wd)
         self.login(wd, "admin", "secret")
-        self.open_grups_page(wd)
+        self.open_groups_page(wd)
         self.create_group(wd, Group("New", "test", "test"))
-        self.return_to_groups_page(wd)
+        self.reaturn_to_group_page(wd)
         self.logout(wd)
 
     def test_add_group_two(self):
         wd = self.wd
-        self.open_hame_page(wd)
+        self.open_home_page(wd)
         self.login(wd, "admin", "secret")
-        self.open_grups_page(wd)
+        self.open_groups_page(wd)
         self.create_group(wd, Group("", "", ""))
-        self.return_to_groups_page(wd)
+        self.reaturn_to_group_page(wd)
         self.logout(wd)
 
-    def open_hame_page(self, wd):
+    def open_home_page(self, wd):
         wd.get("http://localhost/addressbook/")
-
     def login(self, wd, username, password):
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
@@ -38,7 +36,7 @@ class TestAddGroup(unittest.TestCase):
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
-    def open_grups_page(self, wd):
+    def open_groups_page(self, wd):
         wd.find_element_by_link_text("groups").click()
 
     def create_group(self, wd, group):
@@ -57,7 +55,7 @@ class TestAddGroup(unittest.TestCase):
         # submit group creation
         wd.find_element_by_name("submit").click()
 
-    def return_to_groups_page(self, wd):
+    def reaturn_to_group_page(self, wd):
         wd.find_element_by_link_text("group page").click()
 
     def logout(self, wd):
@@ -65,7 +63,6 @@ class TestAddGroup(unittest.TestCase):
 
     def tearDown(self):
         self.wd.quit()
-
 
 if __name__ == "__main__":
     unittest.main()
