@@ -1,6 +1,7 @@
+from Test.model.group import Group
 from Test.fixture.application import Application
-from Test.model.contact import Contact
 import pytest
+
 
 
 @pytest.fixture
@@ -9,12 +10,12 @@ def app(request):
     request.addfinalizer(fixture.destroy)
     return fixture
 
-def test_add_contact(app):
+def test_add_group(app):
     app.session.login("admin", "secret")
-    app.contact.create_contact(Contact("Nata", "UntitledTestSuite", "UntitledTestSuite", "UntitledTestSuite", "UntitledTestSuite"))
+    app.group.create(Group("New", "test", "test"))
     app.session.logout()
 
-def test_add_contact_two(app):
+def test_add_group_two(app):
     app.session.login("admin", "secret")
-    app.contact.create_contact(Contact("", "", "", "", ""))
+    app.group.create(Group("", "", ""))
     app.session.logout()
