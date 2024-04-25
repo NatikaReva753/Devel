@@ -1,5 +1,5 @@
-from group import Group
-from application import Application
+from TestGroup.UntitledTestSuite.model.group import Group
+from TestGroup.UntitledTestSuite.fixture.application import Application
 import pytest
 
 

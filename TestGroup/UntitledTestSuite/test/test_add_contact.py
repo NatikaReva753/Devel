@@ -1,5 +1,5 @@
-from application import Application
-from contact import Contact
+from TestGroup.UntitledTestSuite.fixture.application import Application
+from TestGroup.UntitledTestSuite.model.contact import Contact
 import pytest
 
 
