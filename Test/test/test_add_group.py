@@ -2,8 +2,6 @@ from Test.model.group import Group
 from Test.fixture.application import Application
 import pytest
 
-
-
 @pytest.fixture
 def app(request):
     fixture = Application()
