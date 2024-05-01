@@ -9,9 +9,7 @@ def app(request):
     return fixture
 
 def test_add_group(app):
-    app.session.login("admin", "secret")
     app.group.create(Group("New", "test", "test"))
 
 def test_add_group_two(app):
-    app.session.login("admin", "secret")
     app.group.create(Group("", "", ""))
