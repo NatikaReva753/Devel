@@ -31,8 +31,8 @@ class ContactHelper:
         self.return_to_home_page()
 
     def edit_first_contact(self):
-        wd = self.app.wd
         self.app.open_home_page()
+        wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         wd.find_element_by_name("firstname").click()
@@ -42,6 +42,7 @@ class ContactHelper:
 
     def delete_first_contact(self):
         wd = self.app.wd
+        self.app.open_home_page()
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//input[@value='Delete']").click()
 
