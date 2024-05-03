@@ -1,4 +1,6 @@
+import time
 class SessionHelper:
+
 
     def __init__(self, app):
         self.app = app
@@ -16,21 +18,23 @@ class SessionHelper:
     def logout(self):
         wd = self.app.wd
         wd.find_element_by_link_text("Logout").click()
-
-    def is_logged_in(self):
-        wd = self.app.wd
-        return len(wd.find_elements_by_link_text("Logout")) > 0
-
-    def is_logged_in_as(self):
-        wd = self.app.wd
-        return wd.find_element_by_xpath("//div[@id='top']/form/b").text == ("+username+")
+        time.sleep(3)
 
     def ensure_logout(self):
         wd = self.app.wd
         if self.is_logged_in():
             self.logout()
 
+    def is_logged_in(self):
+        wd = self.app.wd
+        return wd.find_elements_by_link_text("Logout")
+
+    def is_logged_in_as(self, username):
+        wd = self.app.wd
+        return wd.find_element_by_xpath("//div[@id='top']/form/b").text == f"({username})"
+
     def ensure_login(self, username, password):
+        self.app.open_home_page()
         wd = self.app.wd
         if self.is_logged_in():
             if self.is_logged_in_as(username):
@@ -38,3 +42,4 @@ class SessionHelper:
             else:
                 self.logout()
         self.login(username, password)
+
