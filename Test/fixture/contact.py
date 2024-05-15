@@ -34,8 +34,12 @@ class ContactHelper:
         self.change_field_value("address", contact.address)
         self.change_field_value("work", contact.work)
 
-    def edit_first_contact(self, contact):
+    def edit_first_contact(self):
+        self.edit_contact_by_index(0)
+
+    def edit_contact_by_index(self, contact, index):
         self.app.open_home_page()
+        self.select_contact_by_index(index)
         wd = self.app.wd
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.fill_contact_form(contact)
@@ -43,7 +47,14 @@ class ContactHelper:
         self.return_to_home_page()
         self.contact_cache = None
 
+    def select_contact_by_index(self, index):
+        wd = self.app.wd
+        wd.find_elements_by_name("selected[]")[index].click()
+
     def delete_first_contact(self):
+        self.delete_contact_by_index(0)
+
+    def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.app.open_home_page()
         wd.find_element_by_name("selected[]").click()
