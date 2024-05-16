@@ -38,9 +38,8 @@ class ContactHelper:
         self.edit_contact_by_index(0)
 
     def edit_contact_by_index(self, contact, index):
-        self.app.open_home_page()
-        self.select_contact_by_index(index)
         wd = self.app.wd
+        self.app.open_home_page()
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.fill_contact_form(contact)
         wd.find_element_by_name("update").click()
@@ -50,6 +49,7 @@ class ContactHelper:
     def select_contact_by_index(self, index):
         wd = self.app.wd
         wd.find_elements_by_name("selected[]")[index].click()
+        wd.find_element_by_xpath("//img[@alt='Edit']")[index].click()
 
     def delete_first_contact(self):
         self.delete_contact_by_index(0)
