@@ -2,15 +2,18 @@ from sys import maxsize
 
 class Contact:
 
-    def __init__(self, lastname=None, firstname=None, id=None,
-                 day=None, month=None, year=None, id_contact=None, nickname=None, address=None, work=None,
-                 homephone=None, mobilephone=None, workphone=None, all_phones_from_home_page=None,
+    def __init__(self, lastname=None, middlename=None, firstname=None, id=None,
+                 day=None, month=None, year=None, id_contact=None, nickname=None, address=None, work=None, company=None,
+                 title=None, homephone=None, mobilephone=None, workphone=None, fax=None, all_phones_from_home_page=None,
                  email_1=None, email_2=None, email_3=None, all_emails_from_home_page=None):
         self.lastname = lastname
+        self.middlename= middlename
         self.firstname = firstname
         self.nickname = nickname
         self.address = address
         self.work = work
+        self.company = company
+        self.title = title
         self.id = id
         self.day = day
         self.month = month
@@ -23,6 +26,7 @@ class Contact:
         self.homephone = homephone
         self.mobilephone = mobilephone
         self.workphone = workphone
+        self.fax = fax
         self.all_phones_from_home_page = all_phones_from_home_page
 
     def __repr__(self):

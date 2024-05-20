@@ -1,5 +1,6 @@
 import re
 from Test.model.contact import Contact
+
 def test_phones_on_home_page(app):
     if app.contact.count() == 0:
         app.contact.create_contact(Contact(lastname="test", firstname="Nata",
@@ -23,6 +24,7 @@ def test_phones_on_contact_view_page(app):
     assert contact_from_view_page.workphone == contact_from_edit_page.workphone
 
 def clear(s):
+    #замена лишних символов, в 1 параметре передаем, что заменить, во 2 на что, 3 - откуда
     return re.sub("[() -]", "", s)
 
 def merge_phones_like_on_home_page(contact):
