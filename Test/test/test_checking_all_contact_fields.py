@@ -6,7 +6,7 @@ from Test.model.contact import Contact
 def test_checking_all_contact_field(app):
     if app.contact.count() == 0:
         app.contact.create_contact(Contact(lastname="test", firstname="Nata",
-                                           homephone=1234, workphone=2345, mobilephone=3456, address="Moscow",
+                                           homephone="1234", workphone="2345", mobilephone="3456", address="Moscow",
                                            email_1="Nata@test.ru", email_2="Nata2@test.ru", email_3="Nata3@test.ru"))
     index = randrange(len(app.contact.get_contact_list()))
     contact_from_home_page = app.contact.get_contact_list()[index]
