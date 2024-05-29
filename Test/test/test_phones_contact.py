@@ -1,5 +1,5 @@
 import re
-from Test1.model.contact import Contact
+from Test.model.contact import Contact
 
 def test_phones_on_home_page(app):
     if app.contact.count() == 0:

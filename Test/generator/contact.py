@@ -1,4 +1,4 @@
-from Test1.model.contact import Contact
+from Test.model.contact import Contact
 import random
 import string
 import os.path

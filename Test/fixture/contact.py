@@ -1,4 +1,4 @@
-from Test1.model.contact import Contact
+from Test.model.contact import Contact
 import re
 
 class ContactHelper:
@@ -99,14 +99,14 @@ class ContactHelper:
     def open_contact_to_by_index(self, index):
         wd = self.app.wd
         self.app.open_home_page()
-        row = wd.find_element_by_name("entry")[index]
+        row = wd.find_element_by_name("entry")
         cell = row.find_elements_by_tag_name("td")[7]
         cell.find_element_by_tag_name("a").click()
 
     def open_contact_view_by_index(self, index):
         wd = self.app.wd
         self.app.open_home_page()
-        row = wd.find_element_by_name("entry")[index]
+        row = wd.find_element_by_name("entry")
         cell = row.find_elements_by_tag_name("td")[6]
         cell.find_element_by_tag_name("a").click()
 

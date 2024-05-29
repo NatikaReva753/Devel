@@ -1,7 +1,7 @@
 from selenium import webdriver
-from Test1.fixture.session import SessionHelper
-from Test1.fixture.group import GroupHelper
-from Test1.fixture.contact import ContactHelper
+from Test.fixture.session import SessionHelper
+from Test.fixture.group import GroupHelper
+from Test.fixture.contact import ContactHelper
 
 class Application:
 

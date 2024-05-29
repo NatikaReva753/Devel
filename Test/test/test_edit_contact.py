@@ -1,4 +1,4 @@
-from Test1.model.contact import Contact
+from Test.model.contact import Contact
 from random import randrange
 
 
