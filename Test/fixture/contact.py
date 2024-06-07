@@ -1,4 +1,6 @@
 from Test.model.contact import Contact
+from selenium.webdriver.support.ui import Select
+import random
 import re
 
 class ContactHelper:
@@ -62,6 +64,24 @@ class ContactHelper:
         self.return_to_home_page()
         self.contact_cache = None
 
+    def add_contact_in_group_by_id(self, id_contact, id_group):
+        wd = self.app.wd
+        self.app.open_home_page()
+        wd.find_element_by_css_selector("input[value='%s']" % id_contact).click()
+        wd.find_element_by_name("to_group").click()
+        Select(wd.find_element_by_xpath("//select[@name='to_group']")).select_by_value(id_group)
+        wd.find_element_by_name("add").click()
+        self.contact_cache = None
+
+    def del_contact_from_group_by_id(self, id_contact, id_group):
+        wd = self.app.wd
+        self.app.open_home_page()
+        wd.find_element_by_name("group").click()
+        Select(wd.find_element_by_xpath("//select[@name='group']")).select_by_value(id_group)
+        wd.find_element_by_css_selector("input[value='%s']" % id_contact).click()
+        wd.find_element_by_name("remove").click()
+        self.contact_cache = None
+
     def delete_first_contact(self):
         self.delete_contact_by_index(0)
 
@@ -103,6 +123,8 @@ class ContactHelper:
             wd = self.app.wd
             self.app.open_home_page()
             self.contact_cache = []
+            wd.find_element_by_name("group").click()
+            Select(wd.find_element_by_name("group")).select_by_visible_text("[all]")
             for row in wd.find_elements_by_name("entry"):
                 cells = row.find_elements_by_tag_name("td")
                 ln = cells[1].text
