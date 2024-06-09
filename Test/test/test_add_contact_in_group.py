@@ -25,7 +25,7 @@ def test_add_contact_in_group(app, orm, check_ui):
     groups = orm.get_group_list()
     edit_contact = random.choice(contacts)
     add_group_to_contact = random.choice(groups)
-    app.contact.add_contact_in_group_by_id(edit_contact.identifier, add_group_to_contact.identifier)
+    app.contact.add_contact_in_group_by_id(edit_contact.id, add_group_to_contact.id)
     new_contacts = orm.get_contact_list()
     list_contacts_in_group = orm.get_contacts_in_group(add_group_to_contact)
     assert edit_contact in list_contacts_in_group
