@@ -18,7 +18,6 @@ class Contact:
         self.day = day
         self.month = month
         self.year = year
-        self.id_contact = id_contact
         self.email_1 = email_1
         self.email_2 = email_2
         self.email_3 = email_3

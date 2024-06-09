@@ -10,7 +10,6 @@ from Test.fixture.orm import ORMFixture
 fixture = None
 target = None
 
-
 def load_config(file):
     global target
     if target is None:
@@ -18,7 +17,6 @@ def load_config(file):
         with open(config_file) as f:
             target = json.load(f)
     return target
-
 
 @pytest.fixture
 def app(request):
@@ -29,7 +27,6 @@ def app(request):
         fixture = Application(browser=browser, base_url=web_config["baseUrl"])
     fixture.session.ensure_login(username=web_config["username"], password=web_config["password"])
     return fixture
-
 
 @pytest.fixture(scope="session")
 # функция создает соединение с БД
@@ -44,14 +41,12 @@ def db(request):
     request.addfinalizer(fin)
     return dbfixture
 
-
 @pytest.fixture(scope="session")
 def orm(request):
     orm_config = load_config(request.config.getoption("--target"))['db']
     ormfixture = ORMFixture(host=orm_config['host'], name=orm_config['name'], user=orm_config['user'],
                             password=orm_config['password'])
     return ormfixture
-
 
 @pytest.fixture(scope="session", autouse=True)
 def stop(request):
@@ -62,17 +57,14 @@ def stop(request):
     request.addfinalizer(fin)
     return fixture
 
-
 @pytest.fixture
 def check_ui(request):
     return request.config.getoption("--check_ui")
-
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="firefox")
     parser.addoption("--target", action="store", default="target.json")
     parser.addoption("--check_ui", action="store_true")
-
 
 def pytest_generate_tests(metafunc):
     for fixture in metafunc.fixturenames:
@@ -83,10 +75,8 @@ def pytest_generate_tests(metafunc):
             testdata = load_from_json(fixture[5:])
             metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
 
-
 def load_from_module(module):
     return importlib.import_module("data.%s" % module).testdata
-
 
 def load_from_json(file):
     #with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f:
