@@ -1,4 +1,5 @@
 from sys import maxsize
+import pytest
 
 class Contact:
 

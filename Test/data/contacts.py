@@ -1,4 +1,4 @@
-from Test.model.contact import Contact
+from model.contact import Contact
 
 
 testdata = [
