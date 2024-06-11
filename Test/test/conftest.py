@@ -1,5 +1,5 @@
-from Test.fixture.application import Application
-from Test.fixture.db import DbFixture
+from fixture.application import Application
+from fixture.db import DbFixture
 import pytest
 import json
 import os.path

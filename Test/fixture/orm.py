@@ -1,7 +1,7 @@
 from datetime import datetime
 from pony.orm import *
-from Test.model.group import Group
-from Test.model.contact import Contact
+from model.group import Group
+from model.contact import Contact
 from pymysql.converters import decoders
 
 class ORMFixture:

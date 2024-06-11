@@ -1,4 +1,7 @@
+from model.contact import Contact
+from model.group import Group
 import random
+
 def test_del_contact_from_group(app, orm, check_ui):
     if app.contact.count() == 0:
         app.contact.create(Contact(firstname="Test",
