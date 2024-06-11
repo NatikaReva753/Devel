@@ -2,6 +2,7 @@ from random import randrange
 import re
 from model.contact import Contact
 
+
 def test_checking_all_contact_field(app):
     if app.contact.count() == 0:
         app.contact.create_contact(Contact(lastname="test", firstname="Nata",
