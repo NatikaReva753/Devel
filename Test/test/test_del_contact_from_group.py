@@ -2,6 +2,7 @@ from model.contact import Contact
 from model.group import Group
 import random
 
+
 def test_del_contact_from_group(app, db, orm, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.create_contact(Contact(firstname="Test",
