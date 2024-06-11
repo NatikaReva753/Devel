@@ -1,5 +1,4 @@
 from pytest_bdd import given, when, then
-from model.group import Group
 
 @given('a group list')
 def group_list(db):

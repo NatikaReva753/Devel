@@ -1,5 +1,6 @@
 from sys import maxsize
 
+
 class Group:
 
 
