@@ -4,7 +4,7 @@ import pytest
 class Contact:
 
     def __init__(self, lastname=None, middlename=None, firstname=None, id=None,
-                 day=None, month=None, year=None, id_contact=None, nickname=None, address=None, work=None, company=None,
+                 day=None, month=None, year=None, nickname=None, address=None, work=None, company=None,
                  title=None, homephone=None, mobilephone=None, workphone=None, fax=None, all_phones_from_home_page=None,
                  email_1=None, email_2=None, email_3=None, all_emails_from_home_page=None):
         self.lastname = lastname
