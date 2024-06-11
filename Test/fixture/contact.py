@@ -5,7 +5,7 @@ import random
 class ContactHelper:
     def __init__(self, app):
         self.app = app
-    def create(self, contact):
+    def create_contact(self, contact):
         wd = self.app.wd
         self.app.open_home_page()
         # create contact

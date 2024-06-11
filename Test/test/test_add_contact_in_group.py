@@ -18,7 +18,7 @@ def test_add_contact_in_group(app, db, orm, check_ui):
                                    email_2="Nata2@test.ru",
                                    email_3="Nata@test.ru",))
     if len(db.get_group_list()) == 0:
-        app.group.create(Group(name="test"))
+        app.group.create_contact(Group(name="test"))
     contacts = orm.get_contact_list()
     groups = orm.get_group_list()
     contact = random.choice(contacts)
