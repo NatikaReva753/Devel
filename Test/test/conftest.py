@@ -1,11 +1,11 @@
-from Test.fixture.application import Application
-from Test.fixture.db import DbFixture
+from fixture.application import Application
+from fixture.db import DbFixture
+from fixture.orm import ORMFixture
 import pytest
 import json
 import os.path
 import importlib
 import jsonpickle
-from Test.fixture.orm import ORMFixture
 
 fixture = None
 target = None
@@ -32,28 +32,17 @@ def app(request):
 # функция создает соединение с БД
 def db(request):
     db_config = load_config(request.config.getoption("--target"))['db']
-    dbfixture = DbFixture(host=db_config["host"], name=db_config["name"], user=db_config["user"],
-                          password=db_config["password"])
-
+    dbfixture = DbFixture(host=db_config["host"], name=db_config["name"], user=db_config["user"], password=db_config["password"])
     def fin():
         dbfixture.destroy()
-
     request.addfinalizer(fin)
     return dbfixture
-
-@pytest.fixture(scope="session")
-def orm(request):
-    orm_config = load_config(request.config.getoption("--target"))['db']
-    ormfixture = ORMFixture(host=orm_config['host'], name=orm_config['name'], user=orm_config['user'],
-                            password=orm_config['password'])
-    return ormfixture
 
 @pytest.fixture(scope="session", autouse=True)
 def stop(request):
     def fin():
         fixture.session.ensure_logout()
         fixture.destroy()
-
     request.addfinalizer(fin)
     return fixture
 
@@ -83,3 +72,10 @@ def load_from_json(file):
     #with open(os.path.join(os.path.abspath(os.path.abspath(f"../data/{file}.json")))) as f:
     with open(os.path.abspath(f"../data/{file}.json")) as f:
         return jsonpickle.decode(f.read())
+
+@pytest.fixture(scope="session")
+def orm(request):
+    orm_config = load_config(request.config.getoption("--target"))['db']
+    ormfixture = ORMFixture(host=orm_config['host'], name=orm_config['name'], user=orm_config['user'],
+                                password=orm_config['password'])
+    return ormfixture

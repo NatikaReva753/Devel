@@ -1,9 +1,10 @@
 from sys import maxsize
+import pytest
 
 class Contact:
 
-    def __init__(self, lastname=None, middlename=None, firstname=None, id=None,
-                 day=None, month=None, year=None, id_contact=None, nickname=None, address=None, work=None, company=None,
+    def __init__(self, lastname=None, middlename=None, firstname=None, id_contact=None,
+                 day=None, month=None, year=None, nickname=None, address=None, work=None, company=None,
                  title=None, homephone=None, mobilephone=None, workphone=None, fax=None, all_phones_from_home_page=None,
                  email_1=None, email_2=None, email_3=None, all_emails_from_home_page=None):
         self.lastname = lastname
@@ -14,7 +15,7 @@ class Contact:
         self.work = work
         self.company = company
         self.title = title
-        self.id = id
+        self.id = id_contact
         self.day = day
         self.month = month
         self.year = year

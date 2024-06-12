@@ -1,5 +1,4 @@
-from Test.model.group import Group
-
+from model.group import Group
 
 # из random используем функции которые что-то случайным образом выбирают
 # string содержит константы хранящие списки символов

@@ -1,6 +1,6 @@
 import random
 
-from Test.model.contact import Contact
+from model.contact import Contact
 import random
 
 

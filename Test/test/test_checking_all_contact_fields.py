@@ -1,6 +1,6 @@
 from random import randrange
 import re
-from Test.model.contact import Contact
+from model.contact import Contact
 
 
 def test_checking_all_contact_field(app):
