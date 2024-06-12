@@ -70,7 +70,7 @@ def load_from_module(module):
 def load_from_json(file):
     #with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f:
     #with open(os.path.join(os.path.abspath(os.path.abspath(f"../data/{file}.json")))) as f:
-    with open(os.path.abspath(f"../data/{file}.json")) as f:
+    with open(os.path.abspath(f"data/{file}.json")) as f:
         return jsonpickle.decode(f.read())
 
 @pytest.fixture(scope="session")
