@@ -128,10 +128,10 @@ class ContactHelper:
         wd.find_element_by_name("add").click()
         self.contact_cache = None
 
-    def del_contact_from_group_by_id(self, id_contact, id_group):
+    def del_contact_from_group_by_id(self, id_group):
         wd = self.app.wd
         self.app.open_home_page()
-        wd.find_element_by_name("group") % id_contact.click()
+        wd.find_element_by_name("group").click()
         Select(wd.find_element_by_xpath("//select[@name='group']")).select_by_value(id_group)
         wd.find_element_by_name("remove").click()
         self.contact_cache = None
