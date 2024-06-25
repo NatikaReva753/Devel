@@ -103,6 +103,7 @@ class ContactHelper:
                        workphone=workphone)
     def delete_first_contact(self):
         self.delete_contact_by_index(0)
+
     def delete_contact_by_index(self, index):
         wd = self.app.wd
         self.app.open_home_page()
@@ -112,6 +113,7 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         self.return_to_contact_page()
         self.contact_cache = None
+
     def delete_contact_by_id(self, id):
         wd = self.app.wd
         self.app.open_home_page()
@@ -120,6 +122,7 @@ class ContactHelper:
         wd.find_element_by_xpath("//input[@value='Delete']").click()
         self.return_to_contact_page()
         self.contact_cache = None
+
     def add_contact_in_group_by_id(self, id_contact, id_group):
         wd = self.app.wd
         self.app.open_home_page()
@@ -128,13 +131,15 @@ class ContactHelper:
         wd.find_element_by_name("add").click()
         self.contact_cache = None
 
-    def del_contact_from_group_by_id(self, id_group):
+    def del_first_contact_from_group_by_id(self, id_group):
         wd = self.app.wd
         self.app.open_home_page()
         wd.find_element_by_name("group").click()
         Select(wd.find_element_by_xpath("//select[@name='group']")).select_by_value(id_group)
+        wd.find_element_by_name("selected[]").click()
         wd.find_element_by_name("remove").click()
         self.contact_cache = None
+
     def fill_contact_form(self, contact):
         wd = self.app.wd
         self.change_field_value("firstname", contact.firstname)

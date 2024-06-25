@@ -26,7 +26,7 @@ def test_del_contact_from_group(app, db, orm, check_ui):
     del_group_from_contact = random.choice(groups)
     if len(orm.get_contacts_in_group(del_group_from_contact)) == 0:
         app.contact.add_contact_in_group_by_id(contact.id, del_group_from_contact.id)
-    app.contact.del_contact_from_group_by_id(del_group_from_contact.id)
+    app.contact.del_first_contact_from_group_by_id(del_group_from_contact.id)
     new_contacts = orm.get_contact_list()
     list_contacts_not_in_group = orm.get_contacts_not_in_group(del_group_from_contact)
     assert contact in list_contacts_not_in_group
