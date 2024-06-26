@@ -140,15 +140,6 @@ class ContactHelper:
         wd.find_element_by_name("remove").click()
         self.contact_cache = None
 
-    def del_contacts_from_group(self, id_contact, id_group):
-        wd = self.app.wd
-        self.app.open_home_page()
-        wd.find_element_by_name("group").click()
-        Select(wd.find_element_by_xpath("//select[@name='group']")).select_by_value(id_group)
-        wd.find_element_by_css_selector("input[value='%s']" % id_contact).click()
-        wd.find_element_by_name("remove").click()
-        self.contact_cache = None
-
     def fill_contact_form(self, contact):
         wd = self.app.wd
         self.change_field_value("firstname", contact.firstname)
