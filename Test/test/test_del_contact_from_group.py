@@ -17,7 +17,7 @@ def test_del_contact_from_group(app, db, orm, check_ui):
                                    fax="123456",
                                    email_1="Nata1@test.ru",
                                    email_2="Nata2@test.ru",
-                                   email_3="Nata@test.ru",))
+                                   email_3="Nata3@test.ru"))
     if len(db.get_group_list()) == 0:
         app.group.create(Group(name='test'))
     contacts = orm.get_contact_list()

@@ -17,6 +17,7 @@ class ContactHelper:
         self.return_to_contact_page()
         self.contact_cache = None
     contact_cache = None
+
     def get_contact_list(self):
         if self.contact_cache is None:
             wd = self.app.wd
@@ -160,11 +161,10 @@ class ContactHelper:
         self.change_field_value("home", contact.homephone)
         self.change_field_value("mobile", contact.mobilephone)
         self.change_field_value("work", contact.workphone)
-        self.change_field_value("email", contact.email)
-        self.change_field_value("email2", contact.email2)
-        self.change_field_value("email3", contact.email3)
+        self.change_field_value("email", contact.email_1)
+        self.change_field_value("email2", contact.email_2)
+        self.change_field_value("email3", contact.email_3)
         self.change_field_value("fax", contact.fax)
-        self.change_field_value("homepage", contact.homepage)
     def change_field_value(self, field_name, text):
         wd = self.app.wd
         if text is not None:
