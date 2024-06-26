@@ -23,12 +23,12 @@ def test_del_contact_from_group(app, db, orm, check_ui):
     contacts = orm.get_contact_list()
     groups = orm.get_group_list()
     contact = random.choice(contacts)
-    del_group_from_contact = random.choice(groups)
-    if len(orm.get_contacts_in_group(del_group_from_contact)) == 0:
-        app.contact.add_contact_in_group_by_id(contact.id, del_group_from_contact.id)
-    app.contact.del_first_contact_from_group_by_id(del_group_from_contact.id)
+    group = random.choice(groups)
+    if len(orm.get_contacts_in_group(group)) == 0:
+        app.contact.add_contact_in_group_by_id(contact.id, group.id)
+    app.contact.del_contacts_from_group(id_contact=contact.id, id_group=group.id)
     new_contacts = orm.get_contact_list()
-    list_contacts_not_in_group = orm.get_contacts_not_in_group(del_group_from_contact)
+    list_contacts_not_in_group = orm.get_contacts_not_in_group(group)
     assert contact in list_contacts_not_in_group
     if check_ui:
         assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
