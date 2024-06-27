@@ -17,7 +17,7 @@ def test_del_contact_from_group(app, db, orm, check_ui):
                                    fax="123456",
                                    email_1="Nata1@test.ru",
                                    email_2="Nata2@test.ru",
-                                   email_3="Nata3@test.ru"))
+                                   email_3="Nata@test.ru"))
     if len(db.get_group_list()) == 0:
         app.group.create(Group(name='test'))
     contacts = orm.get_contact_list()
@@ -26,7 +26,7 @@ def test_del_contact_from_group(app, db, orm, check_ui):
     group = random.choice(groups)
     if len(orm.get_contacts_in_group(group)) == 0:
         app.contact.add_contact_in_group_by_id(contact.id, group.id)
-    app.contact.del_contacts_from_group(id_contact=contact.id, id_group=group.id)
+    app.contact.del_contacts_from_group(contact.id, group.id)
     new_contacts = orm.get_contact_list()
     list_contacts_not_in_group = orm.get_contacts_not_in_group(group)
     assert contact in list_contacts_not_in_group

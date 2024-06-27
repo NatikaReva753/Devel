@@ -8,7 +8,7 @@ class Contact:
                  title=None, homephone=None, mobilephone=None, workphone=None, fax=None, all_phones_from_home_page=None,
                  email_1=None, email_2=None, email_3=None, all_emails_from_home_page=None):
         self.lastname = lastname
-        self.middlename= middlename
+        self.middlename = middlename
         self.firstname = firstname
         self.nickname = nickname
         self.address = address
