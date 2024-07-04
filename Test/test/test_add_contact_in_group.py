@@ -24,7 +24,8 @@ def test_add_contact_in_group(app, db, orm, check_ui):
     groups = orm.get_group_list()
     contact = random.choice(contacts)
     group = random.choice(groups)
-    if len(orm.get_contacts_in_group(group)) > 0:
+    # Проверяем находится ли контакт в группе, и удаляем его
+    if contact in orm.get_contacts_in_group(group):
         app.contact.del_contacts_from_group(contact.id, group.id)
     app.contact.add_contact_in_group_by_id(contact.id, group.id)
     new_contacts = orm.get_contact_list()
